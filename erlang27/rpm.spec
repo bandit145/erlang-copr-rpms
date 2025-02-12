@@ -1,13 +1,17 @@
+%define version 27.2.2
+%global _disable_source_fetch 0
+
 Name: erlang
-Version: 27.2.2
+Version: %{version}
 Release:        %autorelease
 Summary: Erlang/OTP 27.2
 
 License: EPL-1.1
-URL: https://github.com/erlang/otp 
-Source0: https://github.com/erlang/otp/releases/download/OTP-${version}/otp_src_${version}.tar.gz
+URL: https://github.com/erlang/otp
+Source0: https://github.com/erlang/otp/releases/download/OTP-%{version}/otp_src_%{version}.tar.gz
 
-BuildRequires: make gcc perl ncurses-devel openssl-devel unixODBC sed
+
+BuildRequires: make gcc perl ncurses-devel openssl-devel unixODBC sed wget
 
 %description
 Erlang/OTP 27
@@ -17,14 +21,12 @@ Erlang/OTP 27
 
 
 %build
-cd otp_src_${version}
+ls -al
 export ERL_TOP=$(pwd)
-make release_tests
-make install
 %configure --with-ssl-rpath=no
 %make_build
 make release_tests
-%insall
+%install
 %make_install
 
 
