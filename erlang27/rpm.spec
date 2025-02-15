@@ -14,7 +14,7 @@ BuildRequires: make gcc perl ncurses-devel openssl-devel unixODBC-devel sed wget
 Erlang/OTP 27
 
 %prep
-wget https://github.com/erlang/otp/releases/download/OTP-%{version}/otp_src_%{version}.tar.gz -o %{_sourcedir}/otp_src_%{version}.tar.gz
+wget https://github.com/erlang/otp/releases/download/OTP-%{version}/otp_src_%{version}.tar.gz -O %{_sourcedir}/otp_src_%{version}.tar.gz
 cd %{_sourcedir}
 tar -xf otp_src_%{version}.tar.gz
 %autosetup
@@ -24,22 +24,27 @@ tar -xf otp_src_%{version}.tar.gz
 mv %{_sourcedir}/otp_src_%{version} otp_src_%{version}
 cd otp_src_%{version}
 export ERL_TOP=$(pwd)
-%configure --with-ssl-rpath=no
+./configure --with-ssl-rpath=no --prefix=%{buildroot}/usr/local
 %make_build
 %install
-rm -rf $BUILDROOT
-mkdir $BUILDROOT
-mkdir -p $BUILDROOT/usr/local/bin
-mkdir -p $BUILDROOT/usr/local/lib/erlang
+echo %{buildroot}
+mkdir -p %{buildroot}/usr/local/bin
+mkdir -p %{buildroot}/usr/local/lib64/erlang
 cd otp_src_%{version}
 export ERL_TOP=$(pwd)
-%make_install
-
-%check
+make install
 
 %files
+/usr/local/bin/ct_run
+/usr/local/bin/dialyzer
+/usr/local/bin/epmd
 /usr/local/bin/erl
-/usr/local/lib/erlang/*
+/usr/local/bin/erlc
+/usr/local/bin/escript
+/usr/local/bin/run_erl
+/usr/local/bin/to_erl
+/usr/local/bin/typer
+/usr/local/lib64/erlang/*
 %license
 %doc
 
