@@ -32,20 +32,20 @@ mkdir -p %{buildroot}/usr/local/bin
 mkdir -p %{buildroot}/usr/local/lib64/erlang
 cd otp_src_%{version}
 export ERL_TOP=$(pwd)
-sed -i -E 's/^prefix.+/prefix = \/test/g' Makefile
+export DESTDIR=%{buildroot}
 make install
 
 %files
-/usr/local/bin/ct_run
-/usr/local/bin/dialyzer
-/usr/local/bin/epmd
-/usr/local/bin/erl
-/usr/local/bin/erlc
-/usr/local/bin/escript
-/usr/local/bin/run_erl
-/usr/local/bin/to_erl
-/usr/local/bin/typer
-/usr/local/lib64/erlang/*
+/usr/bin/ct_run
+/usr/bin/dialyzer
+/usr/bin/epmd
+/usr/bin/erl
+/usr/bin/erlc
+/usr/bin/escript
+/usr/bin/run_erl
+/usr/bin/to_erl
+/usr/bin/typer
+/usr/lib64/erlang/*
 %license
 %doc
 
