@@ -17,10 +17,11 @@ Erlang/OTP 27
 wget https://github.com/erlang/otp/releases/download/OTP-%{version}/otp_src_%{version}.tar.gz -O %{_sourcedir}/otp_src_%{version}.tar.gz
 cd %{_sourcedir}
 tar -xf otp_src_%{version}.tar.gz
+mv otp_src_%{version} erlang-%{version}
 
 
 %build
-mv %{_sourcedir}/otp_src_%{version} otp_src_%{version}
+mv %{_sourcedir}/erlang-%{version} otp_src_%{version}
 cd otp_src_%{version}
 export ERL_TOP=$(pwd)
 %configure --with-ssl-rpath=no
