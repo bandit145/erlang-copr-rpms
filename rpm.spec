@@ -51,5 +51,8 @@ make install
 
 
 %changelog
+* Sat Feb 15 2025 Philip Bove <phil@bove.online> 27.2.2-1
+- new package built with tito
+
 %autochangelog
 
