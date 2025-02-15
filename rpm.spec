@@ -14,15 +14,15 @@ BuildRequires: make gcc perl ncurses-devel openssl-devel unixODBC-devel sed wget
 Erlang/OTP 27
 
 %prep
-wget https://github.com/erlang/otp/releases/download/OTP-%{version}/otp_src_%{version}.tar.gz -O %{_sourcedir}/otp_src_%{version}.tar.gz
+ls -al %{_sourcedir}
 cd %{_sourcedir}
 tar -xf otp_src_%{version}.tar.gz
 mv otp_src_%{version} erlang-%{version}
 
 
 %build
-mv %{_sourcedir}/erlang-%{version} otp_src_%{version}
-cd otp_src_%{version}
+ls -al
+cd erlang-%{version}
 export ERL_TOP=$(pwd)
 %configure --with-ssl-rpath=no
 %make_build
