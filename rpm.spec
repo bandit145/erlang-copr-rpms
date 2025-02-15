@@ -19,7 +19,6 @@ cd %{_sourcedir}
 tar -xf otp_src_%{version}.tar.gz
 mv otp_src_%{version} erlang-%{version}
 
-
 %build
 ls -al
 cd erlang-%{version}
