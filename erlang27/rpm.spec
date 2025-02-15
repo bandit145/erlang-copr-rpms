@@ -32,7 +32,7 @@ mkdir -p %{buildroot}/usr/local/bin
 mkdir -p %{buildroot}/usr/local/lib64/erlang
 cd otp_src_%{version}
 export ERL_TOP=$(pwd)
-export DESTDIR=%{buildroot}/usr/local
+sed -i -E 's/^prefix.+/prefix = \/test/g' Makefile
 make install
 
 %files
