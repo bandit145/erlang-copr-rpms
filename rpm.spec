@@ -4,7 +4,7 @@ Version: %{version}
 Release: 1
 Summary: Erlang/OTP 27.2
 
-License: EPL-1.1
+License: Apache-2.0
 URL: https://github.com/erlang/otp
 Source0: https://github.com/erlang/otp/releases/download/OTP-%{version}/otp_src_%{version}.tar.gz
 BuildArch: %{_arch}
