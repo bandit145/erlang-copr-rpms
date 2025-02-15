@@ -21,6 +21,7 @@ mv otp_src_%{version} erlang-%{version}
 
 %build
 ls -al
+mv %{_sourcedir}/erlang-%{version} .
 cd erlang-%{version}
 export ERL_TOP=$(pwd)
 %configure --with-ssl-rpath=no
@@ -29,7 +30,7 @@ export ERL_TOP=$(pwd)
 echo %{buildroot}
 mkdir -p %{buildroot}/usr/bin
 mkdir -p %{buildroot}/usr/lib64/erlang
-cd otp_src_%{version}
+cd erlang-%{version}
 export ERL_TOP=$(pwd)
 export DESTDIR=%{buildroot}
 make install
