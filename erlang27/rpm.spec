@@ -28,8 +28,8 @@ export ERL_TOP=$(pwd)
 %make_build
 %install
 echo %{buildroot}
-mkdir -p %{buildroot}/usr/local/bin
-mkdir -p %{buildroot}/usr/local/lib64/erlang
+mkdir -p %{buildroot}/usr/bin
+mkdir -p %{buildroot}/usr/lib64/erlang
 cd otp_src_%{version}
 export ERL_TOP=$(pwd)
 export DESTDIR=%{buildroot}
