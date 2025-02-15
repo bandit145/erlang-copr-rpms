@@ -24,7 +24,7 @@ tar -xf otp_src_%{version}.tar.gz
 mv %{_sourcedir}/otp_src_%{version} otp_src_%{version}
 cd otp_src_%{version}
 export ERL_TOP=$(pwd)
-./configure --with-ssl-rpath=no --prefix=%{buildroot}/usr/local
+%configure --with-ssl-rpath=no
 %make_build
 %install
 echo %{buildroot}
@@ -32,6 +32,7 @@ mkdir -p %{buildroot}/usr/local/bin
 mkdir -p %{buildroot}/usr/local/lib64/erlang
 cd otp_src_%{version}
 export ERL_TOP=$(pwd)
+export DESTDIR=%{buildroot}/usr/local
 make install
 
 %files
