@@ -1,7 +1,7 @@
 %define version 27.2.2
 Name: erlang
 Version: %{version}
-Release:        %autorelease
+Release: 1
 Summary: Erlang/OTP 27.2
 
 License: EPL-1.1
